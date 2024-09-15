@@ -5,8 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { todoProps } from '@/types';
-import { MdEdit } from 'react-icons/md';
 import { useToast } from '@/hooks/use-toast';
+import { Pencil } from 'lucide-react';
 
 const EditTodo = ({ todo }: { todo: todoProps }) => {
     const [editTodoState, setEditTodoState] = useState(false);
@@ -39,7 +39,7 @@ const EditTodo = ({ todo }: { todo: todoProps }) => {
                 onClick={handleEdit}
                 className="bg-gray-500 hover:bg-gray-600 text-white p-2 rounded-full"
             >
-                <MdEdit />
+                <Pencil />
             </Button>
             {editTodoState ? (
                 <form action={handleSubmit} className="flex gap-2 items-center">

@@ -16,7 +16,7 @@ export async function createTodo(formData: FormData) {
     const jsonData = fs.readFileSync(filePath, 'utf8');
     const todos: todoProps[] = JSON.parse(jsonData) as todoProps[];
     const newTodo: todoProps = {
-        id: todos.length,
+        id: todos[todos.length - 1].id + 1,
         title: input,
         isCompleted: false,
         createdAt: new Date(),
@@ -90,4 +90,17 @@ export async function deleteTodo(formData: FormData) {
     fs.writeFileSync(filePath, JSON.stringify(todos));
 
     revalidatePath('/');
+}
+
+export async function loginUser({
+    email,
+    password,
+}: {
+    email: string;
+    password: string;
+}) {
+    // wait for 3 seconds
+    await new Promise((resolve) => setTimeout(resolve, 3000));
+
+    return email == 'johndoe@email.com' && password == 'secret';
 }
